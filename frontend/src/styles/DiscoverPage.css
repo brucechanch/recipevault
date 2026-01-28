@@ -1,0 +1,33 @@
+.discover-container {
+  display: flex;
+  gap: 32px;
+  padding: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.filter-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .discover-container {
+    flex-direction: column;
+  }
+
+  .filter-sidebar {
+    width: 100%;
+  }
+
+  .recipe-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
