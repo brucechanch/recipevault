@@ -1,3 +1,4 @@
+/* Discover Page Styles */
 .discover-container {
   display: flex;
   gap: 32px;
@@ -6,28 +7,120 @@
   margin: 0 auto;
 }
 
-.filter-sidebar {
+.discover-sidebar {
   width: 280px;
   flex-shrink: 0;
 }
 
-.recipe-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+.discover-sidebar h3 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #2a7f62;
+  margin-bottom: 12px;
+}
+
+.cuisine-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.cuisine-btn {
+  padding: 6px 12px;
+  background: white;
+  color: black;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cuisine-btn.active {
+  background: #22c55e;
+  color: white;
+  border: none;
+}
+
+.cuisine-btn:hover {
+  border-color: #22c55e;
+}
+
+.discover-main {
   flex: 1;
 }
 
-@media (max-width: 768px) {
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.reset-btn {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: all 0.2s;
+}
+
+.reset-btn:hover {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .discover-container {
     flex-direction: column;
+    gap: 24px;
   }
 
-  .filter-sidebar {
+  .discover-sidebar {
     width: 100%;
   }
 
-  .recipe-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  .recipes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .discover-container {
+    padding: 16px;
+  }
+
+  .recipes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cuisine-buttons {
+    gap: 6px;
+  }
+
+  .cuisine-btn {
+    padding: 5px 10px;
+    font-size: 11px;
   }
 }
