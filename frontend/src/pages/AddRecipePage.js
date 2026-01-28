@@ -88,7 +88,7 @@ function AddRecipePage() {
   };
 
   return (
-    <div className="add-recipe-page">
+    <div className="add-recipe-container">
       <h1>Add New Recipe</h1>
       <p className="subtitle">Consolidate your favorite recipes with precise nutritional tracking and automated macros.</p>
 
@@ -222,7 +222,7 @@ function AddRecipePage() {
             </button>
           </div>
 
-          <div className="nutrition-panel">
+          <div className="nutrition-summary">
             <h2>Nutritional Summary</h2>
             <div className="nutrition-display">
               <div className="calories-big">{Math.round(nutrition.calories)}</div>
