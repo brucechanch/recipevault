@@ -10,7 +10,7 @@ function AddRecipePage() {
     instructions: ['']
   });
 
-  const [nutrition, _setNutrition] = useState({ protein: 32, carbs: 45, fat: 18, calories: 485 });
+  const nutrition = { protein: 32, carbs: 45, fat: 18, calories: 485 };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
