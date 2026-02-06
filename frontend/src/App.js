@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/DashboardNavbar';
+
+import Navbar from './components/Navbar';
+import DashboardNavbar from './components/DashboardNavbar'; // ← 新增
+
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -8,6 +11,7 @@ import DiscoverPage from './pages/DiscoverPage';
 import AddRecipePage from './pages/AddRecipePage';
 import MyRecipesPage from './pages/MyRecipesPage';
 import RecipeDetailPage from './pages/RecipeDetailPage';
+import Dashboard from './pages/Dashboard'; // ← 新增
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,27 +21,20 @@ function App() {
     setIsAuthenticated(!!token);
   }, []);
 
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
+  const handleLogin = () => setIsAuthenticated(true);
+  const handleLogout = () => setIsAuthenticated(false);
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
+  const PrivateRoute = ({ children }) => 
+    isAuthenticated ? children : <Navigate to="/login" />;
 
-  const PrivateRoute = ({ children }) => {
-    return isAuthenticated ? children : <Navigate to="/login" />;
-  };
-
-return (
+  return (
     <Router>
       {isAuthenticated ? (
         <>
-          {/* 登入後用 Dashboard Navbar */}
           <DashboardNavbar />
-          <div style={{ paddingTop: '72px' }}> {/* 預留 navbar 空間 */}
+          <div style={{ paddingTop: '72px', minHeight: '100vh', backgroundColor: '#f8fafc' }}>
             <Routes>
-              <Route path="Dashboard.js" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/my-recipes" element={<PrivateRoute><MyRecipesPage /></PrivateRoute>} />
               <Route path="/add-recipe" element={<PrivateRoute><AddRecipePage /></PrivateRoute>} />
               <Route path="/discover" element={<PrivateRoute><DiscoverPage /></PrivateRoute>} />
@@ -48,16 +45,16 @@ return (
         </>
       ) : (
         <>
-          {/* 未登入用舊 Navbar */}
           <Navbar />
           <Routes>
-            {/* 現有登入路由... */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </>
       )}
     </Router>
   );
 }
-
 
 export default App;

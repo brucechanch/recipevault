@@ -1,7 +1,8 @@
 // pages/Dashboard.js
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { recipeAPI } from '../api/client';
 import RecipeCard from '../components/RecipeCard';
+
 
 function Dashboard() {
   const [stats, setStats] = useState({ total: 0, favorites: 0 });
