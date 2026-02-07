@@ -82,7 +82,11 @@ function MyRecipesPage() {
             {recipes.slice(0, 4).map(recipe => (
                <div key={recipe._id} style={{ minWidth: '280px', cursor: 'pointer' }}>
                  <div style={{ aspectRatio: '16/9', borderRadius: '16px', overflow: 'hidden', marginBottom: '12px', position: 'relative' }}>
-                   <img src={recipe.imageUrl || 'https://via.placeholder.com/400'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                   <img 
+                     src={recipe.imageUrl || 'https://via.placeholder.com/400'} 
+                     alt={recipe.title} 
+                     style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                   />
                    <div style={{ position: 'absolute', bottom: '8px', left: '8px', background: '#22c55e', color: 'white', fontSize: '10px', fontWeight: '700', padding: '4px 8px', borderRadius: '6px' }}>NEW</div>
                  </div>
                  <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#0f172a', margin: '0 0 4px 0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{recipe.title}</h4>
@@ -176,7 +180,11 @@ const RecipeCard = ({ recipe, selected, onToggle, navigate }) => (
     </div>
 
     <div style={{ aspectRatio: '1/1', position: 'relative' }}>
-      <img src={recipe.imageUrl || 'https://via.placeholder.com/400'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      <img 
+        src={recipe.imageUrl || 'https://via.placeholder.com/400'} 
+        alt={recipe.title}
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+      />
       <div style={{ 
         position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)',
         display: 'flex', alignItems: 'flex-end', padding: '16px', opacity: 0, transition: 'opacity 0.2s'
